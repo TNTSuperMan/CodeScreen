@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeScreen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="code.css">
+    <link rel="stylesheet" href="wind.css">
+</head>
+<body>
+    <div class="home">
+        <h1>CodeScreen</h1>
+        <div class="homespace"></div>
+        <code class="btn" id="import">Import</code>
+        <br><code>or</code><br>
+        <code class="btn" id="load">Load</code>
+        <select name="libs">
+            <option value="jquery">JQuery</option>
+            <option value="vue3">Vue 3</option>
+            <option value="vue2">Vue 2</option>
+            <option value="react-dom">React-dom</option>
+        </select>
+        <input type="file" name="file" class="importer">
+    </div>
+    <div class="wind">
+        <h2>著作権情報</h2>
+        <p>このソースコードはMITライセンス下に提供されています。</p>
+        <pre></pre>
+        <code class="btn" id="ok">　OK　</code>
+    </div>
+    <div class="code">
+        <code></code>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

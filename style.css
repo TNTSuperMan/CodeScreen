@@ -1,0 +1,39 @@
+@keyframes background {
+    0%{
+        background: white;
+        color:black;
+    }
+    100%{
+        background:#111;
+        color:#0f0
+    }
+}
+*{
+    border-radius:5px;
+}
+body{
+    animation:background 1s ease 1 normal running forwards;
+}
+div.home{
+    text-align:center;
+}
+div.homespace{
+    height:100px;
+}
+code.btn{
+    font-size:20px;
+    cursor:pointer;
+    transition:all ease 0.5s;
+}
+code.btn:hover{
+    background:white;
+    padding:10px;
+}
+input.importer{
+    display:none;
+}
+select{
+    font-size:18px;
+    background:#111;
+    color:white;
+}
