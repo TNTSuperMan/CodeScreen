@@ -19,18 +19,42 @@ const info = computed(()=>{
   return {
     Type:fetchRes.value.type,
     Status:fetchRes.value.status,
-    StatusText:fetchRes.value.statusText,
+    SText:fetchRes.value.statusText,
     Ok:fetchRes.value.ok,
-    Redirected:fetchRes.value.redirected,
+    Redir:fetchRes.value.redirected,
     i:i.value,
     char:model.text[i.value],
-    SquareLayer:bracket.square,
-    CurlyLayer:bracket.curly,
-    ParenthesesLayer:bracket.parentheses,
-    TextBuffer:buf.value
+    asX10:model.text[i.value].charCodeAt(),
+    asX16:model.text[i.value].charCodeAt().toString(16),
+    SLayer:bracket.square,
+    CLayer:bracket.curly,
+    PLayer:bracket.parentheses,
+    TxtBuf:buf.value
   }
 })
 let interval = -1;
+function frame(){
+  model.scroll += 12
+  
+  do{
+    let isClear = true
+    switch(info.value.char){
+      case "(":bracket.parentheses++;break;
+      case ")":bracket.parentheses--;break;
+      case "[":bracket.square++;break;
+      case "]":bracket.square--;break;
+      case "{":bracket.curly++;break;
+      case "}":bracket.curly--;break;
+      case ",":case ";":break;
+      default:
+        isClear = false
+        buf.value += info.value.char;
+        break;
+    }
+    if(isClear) buf.value = ""
+    i.value++
+  }while(info.value.char != "\n")
+}
 function change(url){
   clearInterval(interval)
   i.value = 0;
@@ -39,31 +63,13 @@ function change(url){
   bracket.curly = 0;
   buf.value = ""
   model.scroll = 0;
-  fetch(url).then(e=>{fetchRes.value=e;return e.text()}).then(e=>model.text=e)
-  .then(()=>{
-    
-    interval = setInterval(() => {
-      i.value++
-      model.scroll += 10
-      
-      let isClear = true
-      switch(info.value.char){
-        case "(":bracket.parentheses++;break;
-        case ")":bracket.parentheses--;break;
-        case "[":bracket.square++;break;
-        case "]":bracket.square--;break;
-        case "{":bracket.curly++;break;
-        case "}":bracket.curly--;break;
-        case ",":case ";":break;
-        default:
-          isClear = false
-          buf.value += info.value.char;
-          break;
-      }
-      if(isClear) buf.value = ""
-    }, 0);
-  })
+  fetch(url)
+    .then(e=>{fetchRes.value=e;return e.text()})
+    .then(e=>model.text=e)
 }
+window.addEventListener("keydown",()=>{
+  for(let i = 0;i < Math.random() * 4;i++) frame()
+})
 change("https://unpkg.com/vue@3.5.10/dist/vue.global.js")
 </script>
 <template>

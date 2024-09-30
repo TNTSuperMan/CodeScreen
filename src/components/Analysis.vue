@@ -41,7 +41,11 @@ div.analysis{
 }
 th, td{
     padding:5px;
-    border:1px black solid;
+    border:1px #000 solid;
     text-align:left;
+}
+select{
+    background:#000;
+    color:#fff;
 }
 </style>
