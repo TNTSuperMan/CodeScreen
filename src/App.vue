@@ -15,6 +15,7 @@ const bracket = reactive({
 const buf = ref("")
 const fetchRes = ref({
   type:"",status:"",ok:"",statusText:"",redirected:""})
+const fetchTime = ref()
 const info = computed(()=>{
   return {
     Type:fetchRes.value.type,
@@ -22,6 +23,7 @@ const info = computed(()=>{
     SText:fetchRes.value.statusText,
     Ok:fetchRes.value.ok,
     Redir:fetchRes.value.redirected,
+    Time:fetchTime.value,
     i:i.value,
     char:model.text[i.value],
     asX10:model.text[i.value].charCodeAt(),
@@ -36,7 +38,7 @@ let interval = -1;
 function frame(){
   model.scroll += 12
   
-  do{
+  for(let j = 0;j < Math.random() * 100;j++){
     let isClear = true
     switch(info.value.char){
       case "(":bracket.parentheses++;break;
@@ -53,7 +55,7 @@ function frame(){
     }
     if(isClear) buf.value = ""
     i.value++
-  }while(info.value.char != "\n")
+  }
 }
 function change(url){
   clearInterval(interval)
@@ -63,8 +65,12 @@ function change(url){
   bracket.curly = 0;
   buf.value = ""
   model.scroll = 0;
+  let start = Date.now()
   fetch(url)
-    .then(e=>{fetchRes.value=e;return e.text()})
+    .then(e=>{
+      fetchTime.value = Date.now() - start;
+      fetchRes.value=e;
+      return e.text()})
     .then(e=>model.text=e)
 }
 window.addEventListener("keydown",()=>{

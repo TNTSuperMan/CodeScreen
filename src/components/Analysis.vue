@@ -1,5 +1,6 @@
 <script setup>
 import {ref,watch} from "vue"
+import cdnlist from "@/cdnlist";
 const model = defineModel()
 const emit = defineEmits(["filechange"])
 const url = ref("")
@@ -13,10 +14,7 @@ watch(url,()=>emit("filechange",url.value))
                 <th>Change</th>
                 <th>
                     <select v-model="url">
-                        <option value="https://unpkg.com/vue@3.5.10/dist/vue.global.js">vue3</option>
-                        <option value="https://cdn.jsdelivr.net/npm/vue">vue3 min</option>
-                        <option value="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.js">vue2</option>
-                        <option value="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.min.js">vue2 min</option>
+                        <option v-for="data in Object.keys(cdnlist)" :value="cdnlist[data]">{{ data }}</option>
                     </select>
                 </th>
             </tr>
