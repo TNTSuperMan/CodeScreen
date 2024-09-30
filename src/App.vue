@@ -13,8 +13,15 @@ const bracket = reactive({
   parentheses:0
 })
 const buf = ref("")
+const fetchRes = ref({
+  type:"",status:"",ok:"",statusText:"",redirected:""})
 const info = computed(()=>{
   return {
+    Type:fetchRes.value.type,
+    Status:fetchRes.value.status,
+    StatusText:fetchRes.value.statusText,
+    Ok:fetchRes.value.ok,
+    Redirected:fetchRes.value.redirected,
     i:i.value,
     char:model.text[i.value],
     SquareLayer:bracket.square,
@@ -32,7 +39,7 @@ function change(url){
   bracket.curly = 0;
   buf.value = ""
   model.scroll = 0;
-  fetch(url).then(e=>e.text()).then(e=>model.text=e)
+  fetch(url).then(e=>{fetchRes.value=e;return e.text()}).then(e=>model.text=e)
   .then(()=>{
     
     interval = setInterval(() => {
@@ -54,7 +61,7 @@ function change(url){
           break;
       }
       if(isClear) buf.value = ""
-    }, 10);
+    }, 0);
   })
 }
 change("https://unpkg.com/vue@3.5.10/dist/vue.global.js")

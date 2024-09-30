@@ -1,7 +1,10 @@
 <script setup>
 import {ref,watch,onMounted} from "vue"
 const model = defineProps(["text","scroll"])
-const code = ref()//watch(model,()=>code.value.scroll(0,model.scroll%height))
+const code = ref()
+let height = 0
+onMounted(()=>height=code.value.scrollHeight)
+watch(model,()=>code.value.scroll(0,model.scroll%height))
 </script>
 <template>
   <code ref="code">{{ model.text }}</code>
