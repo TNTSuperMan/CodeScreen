@@ -5,25 +5,27 @@ const model = defineModel()
 const emit = defineEmits(["filechange"])
 const url = ref("")
 watch(url,()=>emit("filechange",url.value))
+const isShowCredit = ref(true)
+window.addEventListener("keydown",e=>{
+    if(/Digit\d/.test(e.code)){
+        emit("filechange",
+            Object.entries(cdnlist)[parseInt(e.code.substring(5))][1])
+    }
+})
 </script>
 <template>
     <div class="analysis">
         <table>
             <tr><th>Name</th><th>Data</th></tr>
-            <tr>
-                <th>Change</th>
-                <th>
-                    <select v-model="url">
-                        <option v-for="data in Object.keys(cdnlist)" :value="cdnlist[data]">{{ data }}</option>
-                    </select>
-                </th>
-            </tr>
             <tr v-for="key in Object.keys(model)">
                 <th>{{ key }}</th>
                 <th>{{ model[key] }}</th>
             </tr>
         </table>
-        
+        <a href="credit.html" target="_blank" v-if="isShowCredit">
+            credit/info/about
+        </a>
+        <button v-if="isShowCredit" @click="isShowCredit=false">X</button>
     </div>
 </template>
 <style scoped>

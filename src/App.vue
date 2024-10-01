@@ -36,9 +36,9 @@ const info = computed(()=>{
 })
 let interval = -1;
 function frame(){
-  model.scroll += 12
+  model.scroll += 12*Math.floor(Math.random()*6)
   
-  for(let j = 0;j < Math.random() * 100;j++){
+  function token(){
     let isClear = true
     switch(info.value.char){
       case "(":bracket.parentheses++;break;
@@ -55,7 +55,13 @@ function frame(){
     }
     if(isClear) buf.value = ""
     i.value++
+    if(i.value >= model.text.length) {
+      i.value = 0
+      buf.value = ""
+    }
   }
+  token()
+  token()
 }
 function change(url){
   clearInterval(interval)
@@ -73,14 +79,12 @@ function change(url){
       return e.text()})
     .then(e=>model.text=e)
 }
-window.addEventListener("keydown",()=>{
-  for(let i = 0;i < Math.random() * 4;i++) frame()
-})
+window.addEventListener("keydown",frame)
 change("https://unpkg.com/vue@3.5.10/dist/vue.global.js")
 </script>
 <template>
   <Code :text="model.text" :scroll="model.scroll"/>
-  <Analysis v-model="info" v-model:char="model.text[i]" @filechange="change"/>
+  <Analysis v-model="info" @filechange="change"/>
 </template>
 <style scoped>
 </style>
