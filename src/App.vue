@@ -47,7 +47,7 @@ function frame(){
       case "]":bracket.square--;break;
       case "{":bracket.curly++;break;
       case "}":bracket.curly--;break;
-      case ",":case ";":break;
+      case ",":case ";":case ">":break;
       default:
         isClear = false
         buf.value += info.value.char;
@@ -63,7 +63,7 @@ function frame(){
   token()
   token()
 }
-function change(url){
+function change(url,istxt){
   clearInterval(interval)
   i.value = 0;
   bracket.square = 0;
@@ -71,13 +71,17 @@ function change(url){
   bracket.curly = 0;
   buf.value = ""
   model.scroll = 0;
-  let start = Date.now()
-  fetch(url)
-    .then(e=>{
-      fetchTime.value = Date.now() - start;
-      fetchRes.value=e;
-      return e.text()})
-    .then(e=>model.text=e)
+  if(istxt){
+    model.text = url
+  }else{
+    let start = Date.now()
+    fetch(url)
+      .then(e=>{
+        fetchTime.value = Date.now() - start;
+        fetchRes.value=e;
+        return e.text()})
+      .then(e=>model.text=e)
+  }
 }
 window.addEventListener("keydown",frame)
 change("https://unpkg.com/vue@3.5.10/dist/vue.global.js")

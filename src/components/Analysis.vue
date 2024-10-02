@@ -3,17 +3,30 @@ import {ref,watch} from "vue"
 import cdnlist from "@/cdnlist";
 const model = defineModel()
 const emit = defineEmits(["filechange"])
+const uploader = ref()
 const url = ref("")
 watch(url,()=>emit("filechange",url.value))
 const isShowCredit = ref(true)
 window.addEventListener("keydown",e=>{
-    if(/Digit\d/.test(e.code)){
-        emit("filechange",
-            Object.entries(cdnlist)[parseInt(e.code.substring(5))][1])
+    if(/Digit\d/.test(e.code) && e.altKey){
+        let data = cdnlist[parseInt(e.code.substring(5))]
+        if(typeof data == "symbol"){
+            uploader.value.click()
+        }else{
+            emit("filechange",data)
+        }
     }
 })
+function load(e){
+    const reader = new FileReader()
+    reader.addEventListener("load",t=>{
+        emit("filechange",t.target.result,1)
+    })
+    reader.readAsText(e.target.files[0])
+}
 </script>
 <template>
+    <input type="file" v-show="false" ref="uploader" @change="load">
     <div class="analysis">
         <table>
             <tr><th>Name</th><th>Data</th></tr>

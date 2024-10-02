@@ -3,7 +3,7 @@ import {ref,watch} from "vue"
 const model = defineProps(["text","scroll"])
 const code = ref()
 watch(model,()=>
-  code.value.scrollTo(0,model.scroll % code.value.scrollHeight))
+  code.value.scrollTo(0,model.scroll % (code.value.scrollHeight - window.innerHeight)))
 </script>
 <template>
   <code ref="code">{{ model.text }}</code>
