@@ -8,7 +8,7 @@ HackerTyperは文字の表示部分だけが取り柄で他の部分が足りな
 ＜そんな人のために！！　CodeScreen！！！＞
 　ⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤⅤ
 
-VueやJQuery等の有名JavaScriptライブラリをCDNから取り寄せ、
+VueやJQuery等の有名JavaScriptライブラリをCDN(jsdelivr)から取り寄せ、
 最小化されたファイルを表示できるため密度を高くできる！
 
 また、そのコードをデバッグするかのような画面を右に表示！
