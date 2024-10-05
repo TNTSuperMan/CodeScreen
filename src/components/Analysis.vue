@@ -45,9 +45,9 @@ div.analysis{
     position:fixed;
     padding:10px;
     margin:10px;
-    left:calc(100% - 140px);
+    left:calc(100% - var(--width) + 10px);
     top:0;
-    width:150px;
+    width:calc(var(--width) - 50px);
     height:calc(100% - 40px);
     background:#222;
 }
@@ -55,8 +55,9 @@ th, td{
     padding:5px;
     border:1px #000 solid;
     text-align:left;
-    width:45px;
+    width:55px;
     word-break: break-all;
+    font-size:15px;
 }
 a{
     font-size:10px;
