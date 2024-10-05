@@ -6,5 +6,7 @@ export default [
     "https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js",
     "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.js",
     "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js",
-    "https://cdn.jsdelivr.net/npm/three@0.169.0/+esm"
+    "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
+    "."
 ]
