@@ -61,7 +61,6 @@ function frame(){
     }
   }
   token()
-  token()
 }
 function change(url,istxt){
   clearInterval(interval)
