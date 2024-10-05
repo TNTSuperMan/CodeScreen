@@ -37,6 +37,12 @@ function load(e){
         <a href="about.html" target="_blank" v-if="isShowCredit">
             使い方・クレジット表記
         </a><br>
+        <a href="https://github.com/TNTSuperMan/CodeScreen" target="_blank" v-if="isShowCredit">
+            GitHub
+        </a><br>
+        <a href="https://www.youtube.com/@TNTSuperMan" target="_blank" v-if="isShowCredit">
+            YouTube
+        </a><br>
         <button v-if="isShowCredit" @click="isShowCredit=false">X</button>
     </div>
 </template>
