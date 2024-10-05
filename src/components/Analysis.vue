@@ -35,8 +35,11 @@ function load(e){
                 <th>{{ model[key] }}</th>
             </tr>
         </table>
-        <a href="credit.html" target="_blank" v-if="isShowCredit">
-            credit/info/about
+        <a href="about-ja.html" target="_blank" v-if="isShowCredit">
+            使い方・クレジット
+        </a><br>
+        <a href="about-en.html" target="_blank" v-if="isShowCredit">
+            How to use / Credit
         </a>
         <button v-if="isShowCredit" @click="isShowCredit=false">X</button>
     </div>

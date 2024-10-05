@@ -1,29 +1,17 @@
 # CodeScreen
+なんかコードが表示されてハッカーっぽくなります。  
+詳細は[CodeScreenのページ](https://tntsuperman.github.io/CodeScreen)から使い方・クレジットを開いてください。
 
-This template should help get you started developing with Vue 3 in Vite.
+## Vue/Vite License
+これ自体はApache license 2.0です。[LICENSE](/LICENSE)
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+Vite/Vue等依存関係はこちらです。[COPYING.md](/COPYING.md)
+## 環境構築
+CodeScreen(からクローンしたもの)のディレクトリがカレントディレクトリの状態で以下コマンドを入力
 ```sh
-npm install
+$ npm install
 ```
-
-### Compile and Hot-Reload for Development
-
+サーバーを起動する場合は
 ```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
+$ npm run dev
 ```
