@@ -18,7 +18,7 @@ code{
   white-space:pre-wrap;
   left:0;
   top:0;
-  width:calc(70% - 20px);
+  width:calc(100% - 130px);
   height:calc(100% - 40px);
   margin:10px;
   font-size:12px;

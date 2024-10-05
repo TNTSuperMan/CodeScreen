@@ -33,7 +33,7 @@ Alt(Opt)キーを押しながら0キーを押すとデバイスのファイル�
 CodeScreenの画面を他のメディアなどに映す場合等は、著作権などが発生します。
 CodeScreen自体のライセンスについては、Apache License 2.0、作者名(TNTSuperMan)等の表記お願いします。
 (使ったよ報告あるとうれしいです)
-技術面に関するライセンスはこちらです。
+技術面に関するクレジットはこちらです。
 https://github.com/TNTSuperMan/CodeScreen/blob/main/COPYING.md
 映したコードの著作権については、押した番号別で下に掲載しています。確認してください。
 

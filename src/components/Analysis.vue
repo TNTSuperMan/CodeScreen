@@ -29,18 +29,14 @@ function load(e){
     <input type="file" v-show="false" ref="uploader" @change="load">
     <div class="analysis">
         <table>
-            <tr><th>Name</th><th>Data</th></tr>
             <tr v-for="key in Object.keys(model)">
-                <th>{{ key }}</th>
-                <th>{{ model[key] }}</th>
+                <th v-if="key != 'TxtBuf'">{{ key }}</th>
+                <th :colspan="key == 'TxtBuf' ? 2 : 1">{{ model[key] }}</th>
             </tr>
         </table>
-        <a href="about-ja.html" target="_blank" v-if="isShowCredit">
-            使い方・クレジット
+        <a href="about.html" target="_blank" v-if="isShowCredit">
+            使い方・クレジット表記
         </a><br>
-        <a href="about-en.html" target="_blank" v-if="isShowCredit">
-            How to use / Credit
-        </a>
         <button v-if="isShowCredit" @click="isShowCredit=false">X</button>
     </div>
 </template>
@@ -49,9 +45,9 @@ div.analysis{
     position:fixed;
     padding:10px;
     margin:10px;
-    left:calc(70% + 10px);
+    left:calc(100% - 140px);
     top:0;
-    width:calc(30% - 50px);
+    width:150px;
     height:calc(100% - 40px);
     background:#222;
 }
@@ -59,9 +55,10 @@ th, td{
     padding:5px;
     border:1px #000 solid;
     text-align:left;
+    width:45px;
+    word-break: break-all;
 }
-select{
-    background:#000;
-    color:#fff;
+a{
+    font-size:10px;
 }
 </style>

@@ -2,6 +2,7 @@
 import {reactive,ref,computed} from "vue"
 import Code from "./components/Code.vue"
 import Analysis from "./components/Analysis.vue"
+import cdnlist from "./cdnlist";
 const model = reactive({
   text:"Loading...",
   scroll:0
@@ -83,7 +84,7 @@ function change(url,istxt){
   }
 }
 window.addEventListener("keydown",frame)
-change("https://unpkg.com/vue@3.5.10/dist/vue.global.js")
+change(cdnlist[1])
 </script>
 <template>
   <Code :text="model.text" :scroll="model.scroll"/>
